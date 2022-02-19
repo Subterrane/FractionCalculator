@@ -1,4 +1,5 @@
-import { showHelp } from "./help.js";
+import { showHelp, showFraction } from "./display.js";
+import { evalArray } from "./math.js";
 import { normalize, parseArray, split, validate } from "./parsers.js";
 
 let input;
@@ -24,8 +25,9 @@ while (loop) {
         input = split(input);
         if (validate(input)) {
           input = parseArray(input);
-          // TODO: do some math
-          console.log(input);
+          const result = evalArray(input);
+          // TODO: reduce
+          showFraction(result);
         } else {
           console.log("  - c'mon, be reasonable");
         }

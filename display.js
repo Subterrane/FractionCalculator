@@ -10,3 +10,8 @@ export const showHelp = () => {
 `
   );
 };
+
+export const showFraction = arr => {
+  const {num, den} = arr[0];
+  console.log(`${num}/${den}`);
+}

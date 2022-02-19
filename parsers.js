@@ -21,6 +21,8 @@ export const parse = str => {
   let num = 0;
   let den = 1;
 
+  str = str.toString();
+
   if (str.includes("/")) {
     const [rest, denominator] = str.split("/");
     str = rest;
@@ -37,7 +39,7 @@ export const parse = str => {
   return { num, den };
 };
 
-export const split = input => input.split(" ");
+export const split = input => input.toString().split(" ");
 export const isOperator = char => ["+", "-", "*", "/"].includes(char);
 
 export const validate = arr =>
