@@ -37,6 +37,11 @@ Egyptian fraction expansion: 3 + 1/2
 Percent increase: (2 + 3/8) + 9/8 = 7/2 is 47.37% larger than 2 + 3/8 = 19/8.
 ```
 
+## Compile
+```
+deno compile --allow-net index.js
+```
+
 ## Run
 Run compiled executable:
 
