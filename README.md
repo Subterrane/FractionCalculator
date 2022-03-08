@@ -6,30 +6,44 @@ Write a command line program in the language of your choice that will take opera
 
 - Legal operators shall be `*, /, +, -` (multiply, divide, add, subtract)
 - Operands and operators shall be separated by one or more spaces
-- Mixed numbers will be represented by whole_numerator/denominator. e.g. "3_1/4"
+- Mixed numbers will be represented by whole numerator/denominator. e.g. "3 1/4"
 - Improper fractions and whole numbers are also allowed as operands
+- `exit`, `quit`, or `q` to quit
 
 ## Example run:
 
 ```
-? 1/2 * 3_3/4
-= 1_7/8
+? 1/2 * 3 3/4
+thinking about 1/2 * 3 3/4
+Input: 1/2 (3 + 3/4)
+Exact result: 15/8
+Decimal form: 1.875
+Mixed fraction: 1 7/8
+Continued fraction: [1; 1, 7]
+Egyptian fraction expansion: 1 + 1/2 + 1/3 + 1/24
+Occurrence in convergents: (3 π)/5≈1, 2, 15/8, 17/9, 49/26, ...
+(simple continued fraction convergent sequence)
 ```
 
 ```
-? 2_3/8 + 9/8
-= 3_1/2
+? 2 3/8 + 9/8
+thinking about 2 3/8 + 9/8
+Input: (2 + 3/8) + 9/8
+Exact result: 7/2
+Decimal form: 3.5
+Mixed fraction: 3 1/2
+Continued fraction: [3; 2]
+Egyptian fraction expansion: 3 + 1/2
+Percent increase: (2 + 3/8) + 9/8 = 7/2 is 47.37% larger than 2 + 3/8 = 19/8.
 ```
 
 ## Run
-(TODO: compile into single executable)
+Run compiled executable:
 
-```
-deno run index.js
-```
+`./FractionCalculator`
 
-## Run Tests
 
+Run from source:
 ```
-deno run --watch test.js
+deno run --allow-net index.js
 ```

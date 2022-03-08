@@ -1,36 +1,37 @@
-import { showHelp, showFraction } from "./display.js";
-import { evalArray } from "./math.js";
-import { normalize, parseArray, split, validate } from "./parsers.js";
-
-let input;
 let loop = true;
 
 while (loop) {
-  input = prompt("?");
+  let input = prompt("?");
 
   switch (input) {
-    case "help":
-    case "h":
-    case "?":
-      showHelp();
-      break;
     case "exit":
     case "quit":
     case "q":
       loop = false;
       break;
     default:
-      if (input) {
-        input = normalize(input);
-        input = split(input);
-        if (validate(input)) {
-          input = parseArray(input);
-          const result = evalArray(input);
-          // TODO: reduce
-          showFraction(result);
-        } else {
-          console.log("  - c'mon, be reasonable");
-        }
+      console.log(`thinking about ${input}`);
+
+      try {
+        let params = new URLSearchParams();
+        params.append("appid", "J8JRRK-Q8953H39T8");
+        params.append("output", "json");
+        params.append("input", input);
+
+        const url = `https://api.wolframalpha.com/v2/query?${params.toString()}`;
+        const res = await fetch(url);
+        const data = await res.json();
+
+        data.queryresult.pods.map(pod => {
+          const { title } = pod;
+          pod.subpods.map(subpod => {
+            const { plaintext } = subpod;
+            if (plaintext && plaintext.length > 0)
+              console.log(`${title}: ${subpod.plaintext}`);
+          });
+        });
+      } catch (err) {
+        console.log("hmmm...I don't know that one");
       }
   }
 }
